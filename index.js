@@ -9,14 +9,14 @@ const port = 3002;
 //     origin: [
 //         'http://localhost:3001',
 //     ],
-//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+//     optionsSuccessStatus: 200 
 // };
 
 // Middleware configuration
 app.use(cors(
     {
-        origin: "*" ,
-        optionsSuccessStatus: 200  
+        origin: "*",
+        optionsSuccessStatus: 200
     }
 ));
 app.use(express.json());
@@ -47,10 +47,10 @@ app.use((req, res, next) => {
         {
             error: 'Route not found',
             status: 404,
-            data: null ,
-            message : {
-                docs : 'https://api-docs-codershubinc.vercel.app',
-                api : 'https://api-codershubinc.vercel.app'
+            data: null,
+            message: {
+                docs: 'https://api-docs-codershubinc.vercel.app',
+                api: 'https://api-codershubinc.vercel.app'
             }
 
         });
