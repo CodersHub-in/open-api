@@ -1,8 +1,16 @@
 import express from 'express';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 
 const app = express();
-const port = 3002;
+const port = 3001;
+
+const limiter = rateLimit({
+    windowMs: 60 * 1000,
+    max: 30,
+    standardHeaders: true,
+    legacyHeaders: false
+});
 
 // CORS configuration
 // const corsOptions = {
@@ -19,6 +27,7 @@ app.use(cors(
         optionsSuccessStatus: 200
     }
 ));
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true,
@@ -29,6 +38,14 @@ app.use(express.urlencoded({
 import homePageRoutes from './src/routes/homePage.routes.js';
 import api_v0_1_router from './src/routes/api/v0.1/index.routes.js';
 import api_v1_0_router from './src/routes/api/v1.0/index.routes.js';
+
+// Import Swagger yaml config path
+import path from 'path';
+
+// Setup static file serving for swagger.yaml so the React app can read it
+app.get('/swagger.yaml', (req, res) => {
+    res.sendFile(path.resolve('./docs/swagger.yaml'));
+});
 
 // Use routes
 app.use('/', homePageRoutes);

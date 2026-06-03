@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 8 9 12;
+  --foreground: 232 233 236;
+  --card: 13 14 18;
+  --card-foreground: 232 233 236;
+  --popover: 15 16 20;
+  --popover-foreground: 232 233 236;
+  --primary: 235 200 115;
+  --primary-foreground: 16 12 6;
+  --secondary: 23 25 32;
+  --secondary-foreground: 220 222 226;
+  --muted: 26 28 36;
+  --muted-foreground: 150 156 168;
+  --accent: 58 204 175;
+  --accent-foreground: 6 18 16;
+  --destructive: 186 48 48;
+  --destructive-foreground: 249 232 232;
+  --border: 33 35 44;
+  --input: 33 35 44;
+  --ring: 235 200 115;
+  --radius: 14px;
+  --font-sans: 'Space Grotesk';
+  --font-display: 'Space Grotesk';
+  --font-mono: 'IBM Plex Mono';
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-grid {
+  background-image:
+    radial-gradient(circle at 10% 10%, rgb(var(--accent) / 0.16), transparent 45%),
+    radial-gradient(circle at 90% 0%, rgb(var(--primary) / 0.2), transparent 50%),
+    linear-gradient(140deg, rgb(var(--background)), rgb(var(--card)) 45%, rgb(var(--background)) 80%);
+}
+
+.halo {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 20%, rgb(var(--accent) / 0.15), transparent 50%);
+  pointer-events: none;
+}
