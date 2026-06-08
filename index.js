@@ -12,15 +12,6 @@ const limiter = rateLimit({
     legacyHeaders: false
 });
 
-// CORS configuration
-// const corsOptions = {
-//     origin: [
-//         'http://localhost:3001',
-//     ],
-//     optionsSuccessStatus: 200 
-// };
-
-// Middleware configuration
 app.use(cors(
     {
         origin: "*",
@@ -39,13 +30,14 @@ import homePageRoutes from './src/routes/homePage.routes.js';
 import api_v0_1_router from './src/routes/api/v0.1/index.routes.js';
 import api_v1_0_router from './src/routes/api/v1.0/index.routes.js';
 
-// Import Swagger yaml config path
+
 import path from 'path';
 
-// Setup static file serving for swagger.yaml so the React app can read it
-app.get('/swagger.yaml', (req, res) => {
-    res.sendFile(path.resolve('./docs/swagger.yaml'));
+app.route("/docs").get((req, res) => {
+    res.sendFile(path.resolve('./docs/index.html'));
 });
+
+
 
 // Use routes
 app.use('/', homePageRoutes);
